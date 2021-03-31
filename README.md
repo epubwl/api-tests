@@ -1,1 +1,1 @@
-# api-tests
+# EPUB Web Library (API Tests)
