@@ -32,7 +32,7 @@ class UserRoute(BaseRoute):
         user_credentials: UserCredentials
     ) -> requests.Response:
         return requests.post(
-            urljoin(self.hostname, "/api/users"),
+            urljoin(self.hostname, "/api/users/login"),
             data=user_credentials.json_stringify(),
             headers=self.json_header
         )
@@ -45,5 +45,5 @@ class UserRoute(BaseRoute):
         return requests.post(
             urljoin(self.hostname, "/api/users/passwordchange"),
             data=password_change.json_stringify(),
-            headers=self.get_authorization_header(token)
+            headers=self.json_header | self.get_authorization_header(token)
         )
